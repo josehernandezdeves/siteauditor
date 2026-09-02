@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(240, 169, 60, 0.08), transparent 40%),
+      radial-gradient(circle at 85% 20%, rgba(61, 220, 151, 0.05), transparent 45%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: rgba(240, 169, 60, 0.25);
+    color: #fff;
+  }
+
+  /* Foco visible y consistente en toda la app: accesibilidad de teclado. */
+  :focus-visible {
+    outline: 2px solid #F0A93C;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Textura de "línea de escaneo" muy sutil, usada solo en el panel del
+     formulario principal: es el único gesto de movimiento decorativo,
+     coherente con el concepto de "instrumento de diagnóstico". */
+  .scanline-border {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(240, 169, 60, 0.5),
+      transparent
+    );
+    background-size: 200% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
